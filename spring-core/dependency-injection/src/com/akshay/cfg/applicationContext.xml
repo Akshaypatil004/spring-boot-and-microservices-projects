@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+           
+	<!-- configured java class as spring -->
+	<bean id="ltime" class="java.time.LocalTime" factory-method="now"/> <!-- dependent spring bean  -->
+	<bean id="ldate" class="java.time.LocalDate" factory-method="now"/> <!-- dependent spring bean -->
+	
+	<bean id="wmg" class="com.akshay.sbeans.WishMessageGenerator"> <!-- target spring bean -->
+		<!-- Setter injection -->
+		<property name="time" ref="ltime"/>
+		<property name="date" ref="ldate"/>
+		<property name="email" value="akshay123@gmail.com"/> <!-- value attribute for direct assigning dependent value [ for hardcoded values ]  -->
+		<property name="age" value="22"/> <!-- for normal property value attribute use for assigning dependent value which fix  -->
+	</bean>
+	
+</beans>
