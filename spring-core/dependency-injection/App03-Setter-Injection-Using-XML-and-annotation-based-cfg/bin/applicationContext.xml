@@ -15,5 +15,7 @@
 	<context:component-scan base-package="com.akshay.sbeans"/>
 	
 	<!-- cfg pre-defined java classes as spring bean  -->
-	<bean id="ldate" class="java.time.LocalDate" factory-method="now"/>
+	<!-- if disable below lines as it is dependent spring bean , so when app runs exception will be thrown as expecting
+	1 spring of type java.time.LocalDate but no spring available  -->
+	<bean id="ldate" class="java.time.LocalDate" factory-method="now"/> 
 </beans>
