@@ -20,3 +20,6 @@ the source code, and it has highest preference if all solutions applied to resol
 resolve ambiguity problem
 
 ### 3. by matching HAS-A with one of the dependent spring bean 
+
+---
+- If we apply all 3 solutions to resolve ambiguity problem then the `@Qualifier` annotation will be taken as final dependent to target
