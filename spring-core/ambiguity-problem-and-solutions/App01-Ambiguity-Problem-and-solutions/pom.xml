@@ -4,10 +4,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.akshay</groupId>
-  <artifactId>App01-Design-Pattern-Factory-Pattern</artifactId>
+  <artifactId>App01-Ambiguity-Problem-and-solutions</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 
-  <name>App01-Design-Pattern-Factory-Pattern</name>
+  <name>App01-Ambiguity-Problem-and-solutions</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -40,7 +40,12 @@
       <artifactId>junit-jupiter-params</artifactId>
       <scope>test</scope>
     </dependency>
-    <!-- Source: https://mvnrepository.com/artifact/org.springframework/spring-context-support -->
+    <dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-context-support</artifactId>
+	    <version>6.2.19</version>
+	    <scope>compile</scope>
+	</dependency>
   </dependencies>
 
   <build>
