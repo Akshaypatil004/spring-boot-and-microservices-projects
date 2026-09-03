@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component("ambiguity")
 public class AmbiguityProblem {
 	
-	@Qualifier("date2") // to solve ambiguity problem 
+//	@Qualifier("date2") // to solve ambiguity problem 
 	@Autowired // field injection
 	private LocalDate date;
 

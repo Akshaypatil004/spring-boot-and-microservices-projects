@@ -18,3 +18,5 @@ to that dependent , for dependency injection. If` @Primary` place on multiple de
 dependent will be injected to target , we can pass bean id to this annotation through properties file , xml withouting touching
 the source code, and it has highest preference if all solutions applied to resolve ambiguity problem that why is best to 
 resolve ambiguity problem
+
+### 3. by matching HAS-A with one of the dependent spring bean 

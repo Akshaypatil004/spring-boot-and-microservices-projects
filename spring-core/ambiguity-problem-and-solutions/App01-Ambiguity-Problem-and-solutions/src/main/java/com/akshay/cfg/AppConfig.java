@@ -21,7 +21,7 @@ public class AppConfig {
 	 */
 	
 	@Bean("date1")
-	@Primary
+//	@Primary
 	public LocalDate createLocalDate1() {
 		return LocalDate.now();
 	}
@@ -29,6 +29,11 @@ public class AppConfig {
 	@Bean("date2")
 	public LocalDate createLocalDate2() {
 		return LocalDate.of(2026,05,12);
+	}
+	
+	@Bean("date") 
+	public LocalDate createLocalDate3() {
+		return LocalDate.of(2026,06,12);
 	}
 
 }
