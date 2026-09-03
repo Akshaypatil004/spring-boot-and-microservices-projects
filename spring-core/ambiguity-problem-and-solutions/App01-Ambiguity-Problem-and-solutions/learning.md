@@ -12,3 +12,9 @@ to target
 ### 1. using @Primary annotation
 - place `@Primary` annotation on the top of one of the multiple dependent spring bean , so that IOC container will be priority 
 to that dependent , for dependency injection. If` @Primary` place on multiple dependent of same type the ambiguity problem continue
+
+### 2. using @Qualifier("beanid") annotation
+- using `@Qualifier(-)` annotation - we pass one of the dependent spring bean id to this annotation along with `@Autowird` and that
+dependent will be injected to target , we can pass bean id to this annotation through properties file , xml withouting touching
+the source code, and it has highest preference if all solutions applied to resolve ambiguity problem that why is best to 
+resolve ambiguity problem
