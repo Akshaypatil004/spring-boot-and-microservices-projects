@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 @Configuration
 @ComponentScan(basePackages = "com.akshay.sbeans")
@@ -20,6 +21,7 @@ public class AppConfig {
 	 */
 	
 	@Bean("date1")
+	@Primary
 	public LocalDate createLocalDate1() {
 		return LocalDate.now();
 	}
