@@ -14,25 +14,25 @@ import org.springframework.stereotype.Repository;
 
 import com.akshay.model.Employee;
 
-@Repository("empDao") // to make java as spring bean cum , DAO class
-public class EmployeeDAOImpl implements IEmployeeDAO{
+@Repository("empMysqlDao")
+public class EmployeeMySqlDAOImpl implements IEmployeeDAO{
 	
-	// SQL queries 
-	private static final String GET_EMP_QUERY = "SELECT EMPNO, ENAME,JOB,SAL,DEPTNO FROM EMP WHERE JOB IN(?,?,?)";
-	private static final String INSERT_EMPLOYEE_QUERY = "INSERT INTO (EMPNO,ENAME,SAL,JOB,DEPTNO) VALUES(?,?,?,?)";
+	// SQL Quries 
+	private static final String GET_EMP_BY_DESG_QUERY = "SELECT EMPNO, ENAME,JOB,SAL,DEPTNO FROM EMP WHERE JOB IN(?,?,?)";
+	private static final String INSERT_EMPLOYEE_QUERY = "INSERT INTO EMP(ENAME,SAL,JOB,DEPTNO) VALUES(?,?,?,?)";
 	
 	@Autowired
-	private DataSource pooled; // represent's JDBC connection pooled 
- 
+	private DataSource pooled;
+
 	@Override
 	public List<Employee> getEmployeesByDesg(String desg1, String desg2, String desg3) throws Exception {
-		System.out.println("EmployeeDAOImpl.getEmployeesByDesg()");
+		System.out.println("EmployeeMySqlDAOImpl.getEmployeesByDesg()");
 		// get the JDBC connection
 		List<Employee> list = null;
 		Connection con = pooled.getConnection();
 		try(con;){
 			// prepared statement
-			PreparedStatement ps = con.prepareStatement(GET_EMP_QUERY);
+			PreparedStatement ps = con.prepareStatement(GET_EMP_BY_DESG_QUERY);
 			
 			// set values to query parameter
 			ps.setString(1, desg1);
@@ -78,11 +78,10 @@ public class EmployeeDAOImpl implements IEmployeeDAO{
 		try(con;ps;){
 			
 			// set values
-			ps.setInt(1, emp.getEno());
-			ps.setString(2, emp.getEname());
-			ps.setDouble(3, emp.getSalary());
-			ps.setString(4, emp.getJob());
-			ps.setInt(5, emp.getDeptNo());
+			ps.setString(1, emp.getEname());
+			ps.setDouble(2, emp.getSalary());
+			ps.setString(3, emp.getJob());
+			ps.setInt(4, emp.getDeptNo());
 			
 			// execute query 
 			result = ps.executeUpdate();
@@ -90,12 +89,12 @@ public class EmployeeDAOImpl implements IEmployeeDAO{
 			
 		}
 		catch(SQLException se) {
-			System.out.println("EmployeeDAOImpl.insertEmployee()");
+			System.out.println("EmployeeMySqlDAOImpl.insertEmployee()");
 			se.printStackTrace();
 			throw se;
 		}
 		catch(Exception e) {
-			System.out.println("EmployeeDAOImpl.insertEmployee()");
+			System.out.println("EmployeeMySqlDAOImpl.insertEmployee()");
 			e.printStackTrace();
 			throw e;
 		}

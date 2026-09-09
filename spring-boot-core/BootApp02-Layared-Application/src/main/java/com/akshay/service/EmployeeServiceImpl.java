@@ -3,6 +3,7 @@ package com.akshay.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.akshay.dao.IEmployeeDAO;
@@ -12,6 +13,7 @@ import com.akshay.model.Employee;
 public class EmployeeServiceImpl implements IEmployeeService{
 	
 	@Autowired
+	@Qualifier("empMysqlDao")
 	private IEmployeeDAO dao;
 
 	@Override
@@ -43,6 +45,13 @@ public class EmployeeServiceImpl implements IEmployeeService{
 		});
 		
 		return listEmp;
+	}
+
+	@Override
+	public int addEmployee(Employee emp) throws Exception {
+		System.out.println("EmployeeServiceImpl.addEmployee()");
+		// use dao
+		return dao.insertEmployee(emp);
 	}
 
 }

@@ -15,7 +15,14 @@ public class PayrollOperationController {
 	private IEmployeeService service;
 	
 	public List<Employee> showAllEmployeeByDesg(String desg1, String desg2, String desg3)throws Exception{
+		System.out.println("PayrollOperationController.showAllEmployeeByDesg()");
 		// user service
 		return service.fetchAllEmployeeByDesg(desg1, desg2, desg3);
 	}
+	
+	public boolean addEmployeeRecord(Employee emp) throws Exception{
+		System.out.println("PayrollOperationController.addEmployeeRecord()");
+		return service.addEmployee(emp) > 0;
+	}
 }
+
