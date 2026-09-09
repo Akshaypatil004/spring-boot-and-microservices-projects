@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="
+		   http://www.springframework.org/schema/beans
+		   http://www.springframework.org/schema/beans/spring-beans.xsd
+		   http://www.springframework.org/schema/context
+		   http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- no need to configure properties file becuase , properties is a part spring boot 
+	application echo system , automatically configured   -->
+	
+	<!--  dao alias config -->
+	<alias name="${dao.id}" alias="dao"/>
+
+</beans>

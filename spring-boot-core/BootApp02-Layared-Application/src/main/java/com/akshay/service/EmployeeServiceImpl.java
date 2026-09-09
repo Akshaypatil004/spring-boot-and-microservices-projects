@@ -13,7 +13,7 @@ import com.akshay.model.Employee;
 public class EmployeeServiceImpl implements IEmployeeService{
 	
 	@Autowired
-	@Qualifier("empMysqlDao")
+	@Qualifier("dao")
 	private IEmployeeDAO dao;
 
 	@Override
