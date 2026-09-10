@@ -1,0 +1,11 @@
+spring:
+   application:
+      name: BootApp07-Working-With-YML-Application
+
+#Customer information
+cust:
+   info:
+      custNo: 1234
+      custName: Raja
+      custAddrs: Hyb
+      billAmt: 2345.78
