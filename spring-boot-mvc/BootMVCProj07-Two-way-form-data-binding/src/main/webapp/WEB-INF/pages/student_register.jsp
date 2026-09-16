@@ -10,7 +10,7 @@
 <body>
 <h2 style="color:red"> Student Registration Form</h2>
 <hr>
-<frm:form action="register" method="POST" modelAttribute="stud">
+<frm:form modelAttribute="stud">
 	Student Number : <frm:input path="sno"/> <br>
 	Student Name   : <frm:input path="sname"/> <br>
 	Student Address : <frm:input path="saddr"/> <br>
