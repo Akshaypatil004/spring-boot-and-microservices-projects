@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.akshay.entity.EmployeeEntity;
 import com.akshay.service.IEmployeeMgmtService;
@@ -48,19 +49,16 @@ public class EmployeeOperationController {
 	}
 	
 	@PostMapping("/emp_add")
-	public String saveEmployee(@ModelAttribute("emp") EmployeeEntity e, Map<String,Object> map) {
+	public String saveEmployee(@ModelAttribute("emp") EmployeeEntity e, RedirectAttributes attr) {
 		System.out.println("EmployeeOperationController.registerEmployee()");
 		
 		// use service
 		String registerEmployee = service.registerEmployee(e);
 		
-		Iterable<EmployeeEntity> allEmployees = service.getAllEmployees();
-		
 		// keep the result in the model attribute
-		map.put("newEmp",registerEmployee);
-		map.put("empList", allEmployees);
+		attr.addFlashAttribute("newEmp",registerEmployee);
 		
-		return "show_employee_report";
+		return "redirect:emp_report";
 		
 	}
 
