@@ -31,6 +31,10 @@
 						<td>${emp.job}</td>
 						<td>${emp.salary}</td>
 						<td>${emp.departmentNo}</td>
+						<td>
+							<a href="emp_edit?no=${emp.id}"><img src="images/edit.jpg" width="30px" height="30px"/></a>
+							<a herf="emp_delete?no=${emp.id}"><img src="images/delete.jpg" width="30px" height="30px"/></a>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -40,5 +44,15 @@
 		<h1 style="color:red;text-align:center"> Employee Not Found</h1>
 	</c:otherwise>
 </c:choose>
+
+<c:if test="${not empty newEmp}">
+	<h1 style="color:red;">
+		${newEmp} 
+	</h1>
+</c:if>
+<center>
+	<a href="emp_add"><img src="images/add.jpg" width="40px" height="50px"/>Add Employee</a> &nbsp;&nbsp;&nbsp;
+	<a href="./"><img src="images/home.jpg" width="40px" height="50px"/>Home</a>
+</center>
 </body>
 </html>

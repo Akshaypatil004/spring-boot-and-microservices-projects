@@ -18,6 +18,12 @@ public class EmployeeMgmtServiceImpl implements IEmployeeMgmtService{
 		System.out.println("EmployeeMgmtServiceImpl.getAllEmployees()");
 		return empRepo.findAll();
 	}
+
+	@Override
+	public String registerEmployee(EmployeeEntity emp) {
+		System.out.println("EmployeeMgmtServiceImpl.registerEmployee()");
+		return "Employee is Saved with id value : " + empRepo.save(emp).getId();
+	}
 	
 	
 
