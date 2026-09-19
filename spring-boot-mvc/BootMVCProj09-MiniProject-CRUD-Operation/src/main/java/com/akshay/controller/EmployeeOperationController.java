@@ -2,11 +2,13 @@ package com.akshay.controller;
 
 import java.util.Map;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.akshay.entity.EmployeeEntity;
@@ -58,6 +60,49 @@ public class EmployeeOperationController {
 		// keep the result in the model attribute
 		attr.addFlashAttribute("newEmp",registerEmployee);
 		
+		return "redirect:emp_report";
+		
+	}
+	
+	@GetMapping("/emp_edit")
+	public String showEditEmployeeFormPage(@RequestParam int id, @ModelAttribute("emp") EmployeeEntity emp) {
+		System.out.println("EmployeeOperationController.showEditEmployeeFormPage()");
+		
+		// use service 
+		EmployeeEntity employeeById = service.getEmployeeById(id);
+		
+		//copy data
+		BeanUtils.copyProperties(employeeById, emp);
+		
+		// return lvn
+		return "update_employee";
+	}
+	
+	@PostMapping("/emp_edit")
+	public String editEmployee(RedirectAttributes attr,@ModelAttribute("emp") EmployeeEntity emp) {
+		System.out.println("EmployeeOperationController.editEmployee()");
+		
+		// use service
+		String updateEmployeeMsg = service.updateEmployee(emp);
+		
+		// add result to the flash attribute
+		attr.addFlashAttribute("updateEmp", updateEmployeeMsg);
+		
+		// redirect 
+		return "redirect:emp_report";
+	}
+	
+	@GetMapping("/emp_delete")
+	public String deleteEmployee(RedirectAttributes attr, @RequestParam int id) {
+		System.out.println("EmployeeOperationController.deleteEmployee()");
+		
+		// use service
+		String deletedEmpMsg = service.deleteEmployeeById(id);
+		
+		// keep the result in the flash attribute
+		attr.addFlashAttribute("deleteEmpMsg", deletedEmpMsg);
+		
+		// redirect
 		return "redirect:emp_report";
 		
 	}
