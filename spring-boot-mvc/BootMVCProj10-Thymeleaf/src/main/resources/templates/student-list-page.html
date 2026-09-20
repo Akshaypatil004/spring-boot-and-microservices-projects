@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>All Students</title>
+</head>
+<body>
+<div th:if="${!students.empty}">
+	
+	<h1>All Students</h1>
+	
+	<table>
+		<thead>
+			<tr>
+				<th>Roll No</th>
+				<th>Name</th>
+				<th>Address</th>
+				<th>Marks</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="stud : ${students}">
+				<td th:text="${stud.rollNo}"></td>
+				<td th:text="${stud.name}"></td>
+				<td th:text="${stud.address}"></td>
+				<td th:text="${stud.marks}"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div th:if="${students.empty}">
+	<h1>No Student Record Found</h1>
+</div>
+<div th:if="${resultMsg != null}" th:inline="javascript">
+	<script>
+		alert([[${resultMsg}]]);
+	</script>
+</div>
+</body>
+</html>
