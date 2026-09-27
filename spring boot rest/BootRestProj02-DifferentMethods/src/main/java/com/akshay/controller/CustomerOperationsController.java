@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @RestController
 @RequestMapping("/customer") // global path
 public class CustomerOperationsController {
@@ -19,8 +20,9 @@ public class CustomerOperationsController {
 	public ResponseEntity<String> showCustomerReport(){
 		System.out.println("CustomerOperationsController.showCustomerReport()");
 		return new ResponseEntity<String>("From Get-ShowReport method",HttpStatus.OK);
+		
 	}
-	
+		
 	@PostMapping("/register")
 	public ResponseEntity<String> registerCustomer(){
 		System.out.println("CustomerOperationsController.registerCustomer()");
